@@ -1,0 +1,73 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+  
+    <div class="row mt-5">
+      <div class="col-xl-12 mb-5 mb-xl-0">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="mb-0">Access Points</h3>
+              </div>
+              <div class="col text-right">
+                <a routerLink="/backend/access-point/create" class="btn btn-sm btn-primary">Add Access Point</a>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">App</th>
+                  <th scope="col">Parent</th>
+                  <th scope="col">Ip Address</th>
+                  <th scope="col">Port</th>
+                  <th scope="col">Device ID </th>
+                  <th scope="col">IN Mine</th>
+                  <th scope="col">Location</th>
+                  <th scope="col" >Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let row of rows">
+                    <tr>
+                        <td>{{row.id}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.type}}</td>
+                        <td>{{row.app}}</td>
+                        <td>{{row.parent}}</td>
+                        <td>{{row.ipAddress}}</td>
+                        <td>{{row.port}}</td>
+                        <td>{{row.deviceID}}</td>
+                        <td>{{row.inMine}}</td>
+                        <td>
+                          <a [routerLink]="['/backend/access-point/position', row.id]" class="btn btn-sm btn-info mr-2">Move</a>
+                        </td>
+                        <td>
+                            <a [routerLink]="['/backend/access-point/edit', row.id]" class="btn btn-sm btn-info mr-2">Edit</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger" (click)="deleteaccessPoint(row.id)">Delete</a>
+                        </td>
+                    </tr>
+                </ng-container>
+                <tr *ngIf="rows.length == 0">
+                    <td colspan="8" class="text-center">No records.</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

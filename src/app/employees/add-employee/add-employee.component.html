@@ -1,0 +1,82 @@
+<div class="header bg-gradient-danger pb-5 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        </div>
+    </div>
+  </div>
+  <div class="col-xl-12 order-xl-1 mt-4">
+    <div class="card bg-secondary shadow ">
+      <div class="card-header bg-white ">
+        <div class="row align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">Employee Detail</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card-body bg-white">
+        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+          <h6 class="heading-small text-muted mb-4">User information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-6">
+                    <div class="form-group">
+                    <label class="form-control-label" >First Name</label>
+                    <input formControlName="firstname" type="text" id="firstname" required  class="form-control form-control-alternative" placeholder="First Name" name="firstname">
+                    <small class="error" *ngIf="f.firstname.invalid && (f.firstname.dirty || f.firstname.touched)">
+                        <div *ngIf="f.firstname.hasError('required')">This field is required.</div>
+                    </small>
+                    </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                <label class="form-control-label" >Last Name</label>
+                <input formControlName="lastname" type="text" id="lastname" required  class="form-control form-control-alternative" placeholder="Last Name" name="lastname">
+                <small class="error" *ngIf="f.lastname.invalid && (f.lastname.dirty || f.lastname.touched)">
+                    <div *ngIf="f.lastname.hasError('required')">This field is required.</div>
+                </small>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                <label class="form-control-label" >Identity Card</label>
+                <input formControlName="identityCard" type="text" id="IdentityCard" required  class="form-control form-control-alternative" placeholder="Identity Card" name="IdentityCard">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                <label class="form-control-label" >Blood Type</label>
+                <input formControlName="bloodType" type="text" id="bloodType" required  class="form-control form-control-alternative" placeholder="Blood Type" name="bloodType">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                <label class="form-control-label" >Qualifications</label>
+                <input formControlName="Qualifications" type="text" id="Qualifications" required  class="form-control form-control-alternative" placeholder="Qualifications" name="Qualifications">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                <label class="form-control-label" >First Aid Level</label>
+                <input formControlName="FirstAidLevel" type="text" id="FirstAidLevel" required  class="form-control form-control-alternative" placeholder="First Aid Level" name="FirstAidLevel">
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <!-- Address -->
+          <div class="pl-lg-4">
+            <div class="form-group">
+              <label class="form-control-label" >Medical Notes</label>
+              <textarea rows="4" formControlName="MedicalNotes" type="text" id="MedicalNotes" required  class="form-control form-control-alternative" placeholder="Medical Notes" name="MedicalNotes">A few words about you ...</textarea>
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-success col-lg-6">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="pt-5"></div>

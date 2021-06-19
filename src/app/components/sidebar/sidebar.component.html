@@ -1,0 +1,37 @@
+<nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+      <a class="h4 mb-0 text-black text-uppercase d-none d-lg-inline-block pt-4" routerLinkActive="active" [routerLink]="['/dashboard']">Back to Dashboard</a>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse"  [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
+        <!-- Collapse header -->
+        <div class="navbar-collapse-header d-md-none">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a  routerLinkActive="active" [routerLink]="['/dashboard']">
+                <img src="./assets/img/brand/blue.png">
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" (click)="isCollapsed=!isCollapsed">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation -->
+        <ul class="navbar-nav">
+            <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+                <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
+                    <i class="ni {{menuItem.icon}}"></i>
+                    <strong>{{menuItem.title}}</strong>
+                </a>
+                <hr class="my-0" />
+            </li>
+        </ul>
+        <!-- Navigation -->
+  
+      </div>
+    </div>
+  </nav>
+  

@@ -1,0 +1,84 @@
+<nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button"
+         aria-controls="sidenav-collapse-main">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/dashboard']">
+        <h3>Mine Safety</h3>
+      </a>
+      <!-- User -->
+  
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse"   id="sidenav-collapse-main">
+        <!-- Collapse header -->
+  
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <form class="navbar-search navbar-search-light form-inline mr-3 d-none d-md-flex ml-lg-auto">
+              <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
+                  (blur)="focus = false">
+                </div>
+              </div>
+            </form>
+          </li>
+        </ul>
+        
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Navigation -->
+  
+        <div class="table-responsive ">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" class=" text-white"> Names </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th >
+                  <a [routerLink]="['/tracking/map/userProfile', 4]" ><span class="logged-in "> ● </span>Mubashar Ahmed</a>
+                   
+                </th>
+              </tr>
+              <tr>
+                <th >
+                  <a [routerLink]="['/tracking/map/userProfile', 5]" ><span class="logged-in "> ● </span> Hamza Abid</a>
+                </th>
+              </tr>
+              <tr>
+                <th >
+                  <a [routerLink]="['/tracking/map/userProfile', 6]" ><span class="logged-in "> ● </span>Awais Qarni</a>
+                </th>
+              </tr>
+              <tr>
+                <th >
+                  <a [routerLink]="['/tracking/map/userProfile', 7]" ><span class="logged-out "> ● </span>Usama Arshad</a>
+                </th>
+              </tr>
+              <tr>
+                <th >
+                  <a [routerLink]="['/tracking/map/userProfile', 8]" ><span class="logged-out "> ● </span>Qasim Ahmad</a>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Heading -->
+  
+        <!-- Navigation -->
+  
+      </div>
+    </div>
+  </nav>
+  

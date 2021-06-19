@@ -1,0 +1,139 @@
+
+<div class="header bg-gradient-danger py-7 py-lg-8">
+    <div class="container">
+      <div class="header-body text-center mb-7">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-6">
+            <h1 class="text-white">Welcome!</h1>
+            <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="separator separator-bottom separator-skew zindex-100">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container mt--8 pb-5 ">
+    <!-- Table -->
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card  shadow border-0" style="background: whitesmoke;">
+          <div class="card-header bg-transparent pb-5">
+            <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
+            <div class="text-center">
+              <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
+                <span class="btn-inner--icon"><img src="assets/img/icons/common/github.svg"></span>
+                <span class="btn-inner--text">Github</span>
+              </a>
+              <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+                <span class="btn-inner--icon"><img src="assets/img/icons/common/google.svg"></span>
+                <span class="btn-inner--text">Google</span>
+              </a>
+            </div>
+          </div>
+          <div class="card-body px-lg-5 py-lg-5">
+            <div class="text-center text-muted mb-4">
+              <small>Or sign up with credentials</small>
+            </div>
+            <form role="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                  </div>
+                  <input formControlName="username" class="form-control" placeholder="Name" type="text">
+                  <small class="error" *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)">
+                    <div *ngIf="f.username.hasError('required')">This field is required.</div>
+                    <div *ngIf="f.username.hasError('pattern')">Only alphanumeric is allowed.</div>
+                </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  <input formControlName="password"  class="form-control" placeholder="Password" type="password">
+                  <small class="error" *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                    <div *ngIf="f.password.hasError('required')">This field is required.</div>
+                    <div *ngIf="f.password.hasError('minlength')">Password must be at least 6 characters.</div>
+                </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  <input formControlName="passconf" class="form-control" placeholder=" Confirm Password" type="password">
+                  <small class="error" *ngIf="f.passconf.invalid && (f.passconf.dirty || f.passconf.touched)">
+                    <div *ngIf="f.passconf.hasError('required')">This field is required.</div>
+                </small>
+                <small class="error" *ngIf="signupForm.errors?.passwordmatch && (signupForm.dirty || signupForm.touched)">
+                    Password and confirm password must be match.
+                </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  </div>
+                  <input formControlName="email" class="form-control" placeholder="Email" type="email">
+                  <small class="error" *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                    <div *ngIf="f.email.hasError('required')">This field is required.</div>
+                    <div *ngIf="f.email.hasError('email')">Enter valid email address.</div>
+                </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                  </div>
+                  <input formControlName="first_name" class="form-control" placeholder=" First Name" type="text">
+                  <small class="error" *ngIf="f.first_name.invalid && (f.first_name.dirty || f.first_name.touched)">
+                    <div *ngIf="f.first_name.hasError('required')">This field is required.</div>
+                </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                  </div>
+                  <input formControlName="last_name" class="form-control" placeholder="Last Name" type="text">
+                  
+                </div>
+              </div>
+              
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                    <label class="custom-control-label" for="customCheckRegister">
+                      <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary mt-4">Create account</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-3">
+          
+          <div class="col-7 text-right">
+            <a routerLink="/auth/login" class="text-light"><small>Or Login</small></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

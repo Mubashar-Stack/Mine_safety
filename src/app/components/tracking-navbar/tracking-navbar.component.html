@@ -1,0 +1,88 @@
+
+  <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark bg-gradient-danger ">
+    <div class="container px-4">
+      <ul class="navbar-nav align-items-center d-none d-md-flex">
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" routerLink="/dashboard">
+            <i class="ni ni-planet"></i>
+            <span class="nav-link-inner--text text-white text-uppercase ">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" routerLink="/environmental-tracking/environmental-map">
+            <i class="ni ni-planet"></i>
+            <span class="nav-link-inner--text text-white text-uppercase ">Environmental Tracking</span>
+          </a>
+        </li>
+        <li class="nav-item" ngbDropdown placement="bottom-left">
+          <a class="nav-link pr-0" role="button" ngbDropdownToggle>
+            <div class="media align-items-center">
+              <div class="media-body ml-2 d-none d-lg-block">
+                <i class="ni ni-bold-down"></i>
+                <span class="mb-0 text-sm  font-weight-bold">Tracking</span>
+              </div>
+            </div>
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+              <i class="ni ni-single-02"></i>
+              <span>Overview</span>
+            </a>
+            <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+              <i class="ni ni-settings-gear-65"></i>
+              <span>Map</span>
+            </a>
+            <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+              <i class="ni ni-calendar-grid-58"></i>
+              <span>Status</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="collapse navbar-collapse"   id="sidenav-collapse-main">
+
+
+        <!-- Navbar items -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <ul class="navbar-nav align-items-center d-none d-md-flex">
+              <li class="nav-item" ngbDropdown placement="bottom-right">
+                <a class="nav-link pr-0" role="button" ngbDropdownToggle>
+                  <div class="media align-items-center">
+                    <span class="avatar avatar-sm rounded-circle">
+                      <img alt="Image placeholder" src="assets/img/theme/team-1-800x800.jpg">
+                    </span>
+                    <div class="media-body ml-2 d-none d-lg-block">
+                      <span class="mb-0 text-sm  font-weight-bold">Mubashar Ahmed</span>
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+                  <div class=" dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">Welcome!</h6>
+                  </div>
+                  <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+                    <i class="ni ni-single-02"></i>
+                    <span>My profile</span>
+                  </a>
+                  <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+                    <i class="ni ni-settings-gear-65"></i>
+                    <span>Settings</span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#!" (click)="logout()" class="dropdown-item">
+                    <i class="ni ni-user-run"></i>
+                    <span>Logout</span>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+         <!-- User -->
+   
+      </div>
+    </div>
+  </nav>
+

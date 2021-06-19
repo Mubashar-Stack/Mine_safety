@@ -1,0 +1,69 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+  
+    <div class="row mt-5">
+      <div class="col-xl-12 mb-5 mb-xl-0">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="mb-0">Employees</h3>
+              </div>
+              <div class="col text-right">
+                <a routerLink="/backend/employees/create" class="btn btn-sm btn-primary">Add Employee</a>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID#</th>
+                  <th scope="col">Identity Card</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">Blood Type</th>
+                  <th scope="col">Medical Notes</th>
+                  <th scope="col">Qualifications </th>
+                  <th scope="col">First Aid Level</th>
+                  <th scope="col" >Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let row of rows">
+                    <tr>
+                        <td><strong>{{row.id}}</strong></td>
+                        <td><strong>{{row.identityCard}}</strong></td>
+                        <td><strong>{{row.firstname}}</strong></td>
+                        <td><strong>{{row.lastname}}</strong></td>
+                        <td><strong>{{row.photo}}</strong></td>
+                        <td><strong>{{row.bloodType}}</strong></td>
+                        <td><strong>{{row.MedicalNotes}}</strong></td>
+                        <td><strong>{{row.Qualifications}}</strong></td>
+                        <td><strong>{{row.FirstAidLevel}}</strong></td>
+                        <td>
+                            <a [routerLink]="['/backend/employees/edit', row.id]" class="btn btn-sm btn-info mr-2">Edit</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger" (click)="deleteEmployee(row.id)">Delete</a>
+                        </td>
+                    </tr>
+                </ng-container>
+                <tr *ngIf="rows.length == 0">
+                    <td colspan="8" class="text-center">No records.</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

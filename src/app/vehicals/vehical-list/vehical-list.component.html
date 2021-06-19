@@ -1,0 +1,59 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+  
+    <div class="row mt-5">
+      <div class="col-xl-12 mb-5 mb-xl-0">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="mb-0">Vehicals</h3>
+              </div>
+              <div class="col text-right">
+                <a routerLink="/backend/vehicals/create" class="btn btn-sm btn-primary">Add Vehical</a>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID#</th>
+                  <th scope="col">Serial#</th>
+                  <th scope="col">Vehical Type</th>
+                  <th scope="col">Notes/Discription</th>
+                  <th scope="col" >Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let row of rows">
+                    <tr>
+                        <td>{{row.id}}</td>
+                        <td>{{row.serialnumber}}</td>
+                        <td>{{row.vtype}}</td>
+                        <td>{{row.vnotes}}</td>
+                        <td>
+                            <a [routerLink]="['/backend/vehicals/edit', row.id]" class="btn btn-sm btn-info mr-2">Edit</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger" (click)="deleteVehical(row.id)">Delete</a>
+                        </td>
+                    </tr>
+                </ng-container>
+                <tr *ngIf="rows.length == 0">
+                    <td colspan="8" class="text-center">No records.</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
