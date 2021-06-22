@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { accessPointService } from '../services/access-point.service';
+import { TestBed } from '@angular/core/testing';
 
 @Component({
   selector: 'app-position-access-point',
@@ -11,6 +12,8 @@ import { accessPointService } from '../services/access-point.service';
 export class PositionAccessPointComponent implements OnInit {
   private map;
   private accessPointId: number;
+  private latP: number;
+  private lngP: number;
   private position = {
     Lat: 40.912145171922575,
     Lng: 1.0712748621690074
@@ -25,30 +28,44 @@ export class PositionAccessPointComponent implements OnInit {
   
     ngOnInit(): void {
     this.accessPointId = +this.route.snapshot.paramMap.get('id');
-    if(this.accessPointId){
-      localStorage.setItem('accessPointId', JSON.stringify(this.accessPointId));
-      this.accessPointService.getaccessPoint(this.accessPointId).subscribe(
-        result => {
-          localStorage.setItem('accessPoint', JSON.stringify(result)); 
+    this.route.queryParams
+      .subscribe(params => {
+        this.latP = params.lat;
+        this.lngP = params.lng;
+        if(this.latP){
+          this.accessPointService.getaccessPoint(this.accessPointId).subscribe(
+            result => {
+              var model:any = result.data;
+              model.id = this.accessPointId;
+              model.Location = this.latP+','+this.lngP;
+              alert(model.Location);
+              console.log(model);
+              this.accessPointService.updateaccessPoint(model).subscribe(
+                result => {
+                  console.log(result);
+                  if ( ! result.error) {
+                    this.router.navigateByUrl('/backend/access-point');
+                  } else {
+                    alert('Some thingh went wrong!');
+                  }
+                }
+              )
+              
+              
+            }
+          )
           
         }
-      )
-      this.initMap();
-      
-    }
-    else{
-      alert("You can't update the Router Location")
-    }
-    
-    
-    
-  } 
-
-  
-
-  private initMap() {
-
-    this.map = L.map('map', {
+        else{
+          alert("Noooooooo!")
+        }
+        
+      }
+    );
+   
+    if(this.accessPointId){
+     
+       this.map = L.map('map', {
       center: [ 51.505, 0],
       zoom: 3
     });
@@ -62,29 +79,50 @@ export class PositionAccessPointComponent implements OnInit {
 
     tiles.addTo(this.map);
     const marker = L.marker([this.position.Lat,this.position.Lng],{
-      draggable: true
+      draggable: true,
+      
     });
 
     marker.on('dragend', function(event) {
+      var lat = marker.getLatLng().lat;
+      var lng = marker.getLatLng().lng;
+      var popup =`<form role="form" id="form" enctype="multipart/form-data" class = "form-horizontal" >
+              
+              <div class="form-group">
+                  <label class="control-label col-sm-5"><strong>Lat: </strong></label>
+                  <input  type="text" id="lat" name="lat" value="${lat}" />
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-5"><strong>Lng: </strong></label>
+                  <input  type="text" id="lat" name="lng" value="${lng}" />
+              </div>
+              <div class="form-group">
+                <div style="text-align:center;" class="col-xs-4"><button type="submit" value="submit" class="btn btn-primary trigger-submit">Submit</button></div>
+              </div>
+              </form>`;
       
-      marker.bindPopup("<b>Location:</b> " + marker.getLatLng().lat + ", " + marker.getLatLng().lng+ 
-      "</br><b>By: Mubashar ahmed</b> ").openPopup();
-      initAccessPoint(marker.getLatLng().lat,marker.getLatLng().lng);
       
+      marker.bindPopup(popup).openPopup();
+
       
       
     });
-    
+   
     marker.addTo(this.map);
+    }
+    else{
+      alert("You can't update the Router Location")
+    }
+    
+    
+    
+  } 
 
-    
-    
-  }
 
   
 
-
-
+  
+  
 }
 
 
@@ -94,9 +132,6 @@ export class PositionAccessPointComponent implements OnInit {
 
 
 
-function initAccessPoint(lat: number, lng: number) {
-  var model:any  = JSON.parse(localStorage.getItem('accessPoint'));
-  console.log(model);
-  alert(model.data.location);
-}
+
+
 
