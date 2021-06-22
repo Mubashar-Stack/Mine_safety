@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000'
+  apiUrl: 'https://3000-chocolate-elk-uvhd3p8v.ws-eu08.gitpod.io'
 };
 
 /*
