@@ -8,7 +8,11 @@ import { activeDevice } from '../models/active-devices';
 import { deviceAssociation } from '../../device-association/models/device-association';
 import {DeviceAssociationService} from '../../device-association/services/device-association.service';
 import { EmployeeService } from '../../employees/services/employee.service';
-import { Employee } from '../../employees/models/employee'
+import { Employee } from '../../employees/models/employee';
+import { AssetsService } from '../../assets/services/assets.service';
+import { Assets } from '../../assets/models/assets';
+import { VehicalService } from '../../vehicals/services/vehical.service';
+import { Vehical } from '../../vehicals/models/vehical';
 
 @Component({
   selector: 'app-map',
@@ -22,18 +26,42 @@ export class MapComponent implements OnInit {
   actDvc: activeDevice[] = [];
   deviceAsso:deviceAssociation[] = [];
   emp: Employee[] = [];
+  vehical: Vehical[] = [];
+  assets: Assets[] = [];
 
   map: Map;
   mapOptions: MapOptions;
+  TotalEmp:number;
+  TotalVhl:number;
+  Totalast:number;
   
   constructor(private markerService: NodemarkerService,
     private activeDService: ActivedevicesService,
     private deviceAssoService: DeviceAssociationService,
     private empService: EmployeeService,
+    private assetsService: AssetsService,
+    private vehicalService: VehicalService,
     private router: Router) { }
 
   ngOnInit() {
+    
     this.initializeMapOptions();
+    this.empService.getEmployees().subscribe(
+      resultEmp => {
+        this.TotalEmp = Object.keys(resultEmp).length;
+        
+      }
+    )
+    this.assetsService.getAssets().subscribe(
+      resultAst => {
+        this.Totalast = Object.keys(resultAst).length;
+      }
+    )
+    this.vehicalService.getVehicals().subscribe(
+      resultVhl => {
+        this.TotalVhl = Object.keys(resultVhl).length;
+      }
+    )
   }
 
   onMapReady(map: Map) {
