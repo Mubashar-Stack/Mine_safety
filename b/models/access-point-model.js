@@ -28,6 +28,8 @@ let model = {
     },
     updateaccessPoint: (input, cb) => {
         let currentDate = dateFormat(new Date(), 'yyyy-mm-dd h:MM:ss');
+        console.log(input);
+        console.log("ok")
         let data = {
             ipAddress: input.ipAddress,
             name: input.name,
@@ -36,10 +38,12 @@ let model = {
             parent: input.parent,
             port: input.port,
             deviceID: input.deviceID,
-            inMine: input.inMine
+            inMine: input.inMine,
+            location: input.location,
             
 
         }
+        console.log(data);
         return db.query("UPDATE access_points SET ? WHERE id=?", [data, input.id], cb)
     },
     deleteaccessPoint: (id, cb) => {

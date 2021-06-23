@@ -37,9 +37,9 @@ export class PositionAccessPointComponent implements OnInit {
             result => {
               var model:any = result.data;
               model.id = this.accessPointId;
-              model.Location = this.latP+','+this.lngP;
-              alert(model.Location);
-              console.log(model);
+              model.location = this.latP+','+this.lngP;
+              alert(model.location);
+              console.log(localStorage.getItem("currentUser"));
               this.accessPointService.updateaccessPoint(model).subscribe(
                 result => {
                   console.log(result);

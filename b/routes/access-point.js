@@ -28,6 +28,7 @@ router.post('/add', function(req, res) {
 })
 
 router.put('/update', function(req, res) {
+    
     model.updateaccessPoint(req.body, function(err, result) {
         res.json({data: result, error: err});
     })
