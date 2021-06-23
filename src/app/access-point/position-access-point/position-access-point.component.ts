@@ -15,8 +15,8 @@ export class PositionAccessPointComponent implements OnInit {
   private latP: number;
   private lngP: number;
   private position = {
-    Lat: 40.912145171922575,
-    Lng: 1.0712748621690074
+    Lat: 43.0749934482418,
+    Lng: -98.94291319105722
   };
   
   
@@ -28,6 +28,7 @@ export class PositionAccessPointComponent implements OnInit {
   
     ngOnInit(): void {
     this.accessPointId = +this.route.snapshot.paramMap.get('id');
+    
     this.route.queryParams
       .subscribe(params => {
         this.latP = params.lat;
@@ -35,11 +36,10 @@ export class PositionAccessPointComponent implements OnInit {
         if(this.latP){
           this.accessPointService.getaccessPoint(this.accessPointId).subscribe(
             result => {
-              var model:any = result.data;
+              var model:any = result.data; 
               model.id = this.accessPointId;
               model.location = this.latP+','+this.lngP;
-              alert(model.location);
-              console.log(localStorage.getItem("currentUser"));
+              
               this.accessPointService.updateaccessPoint(model).subscribe(
                 result => {
                   console.log(result);
@@ -56,9 +56,7 @@ export class PositionAccessPointComponent implements OnInit {
           )
           
         }
-        else{
-          alert("Noooooooo!")
-        }
+       
         
       }
     );
