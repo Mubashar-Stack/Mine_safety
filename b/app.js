@@ -56,7 +56,7 @@ app.use('/active-device',passport.authenticate('jwt', { session: false }),active
 
 
 var parser = new xml2js.Parser();
-const socket = new net.Socket();
+/*const socket = new net.Socket();
 
 var wifiTags = [];
 
@@ -128,7 +128,7 @@ modelAccess.getaccessPoints(function(err, result) {
       
       getActiveDevice(result[0])
   }
-});
+});*/
 
 
 

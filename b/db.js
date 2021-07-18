@@ -2,11 +2,11 @@
 var mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host: "remotemysql.com",
+    host: "sql6.freemysqlhosting.net",
     port: 3306,
-    user: 'TArhqbh9FB',
-    password: "o5aDtpWUGb",
-    database: "TArhqbh9FB"
+    user: 'sql6425926',
+    password: "yfNycXJIVj",
+    database: "sql6425926"
 })
 
 connection.connect(function(err) {

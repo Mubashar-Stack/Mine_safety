@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://3000-chocolate-elk-uvhd3p8v.ws-eu08.gitpod.io'
+  apiUrl: 'https://3000-emerald-beaver-zfcpo1ui.ws-eu11.gitpod.io/'
 };
 
 /*
